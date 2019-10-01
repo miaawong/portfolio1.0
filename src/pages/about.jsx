@@ -10,9 +10,9 @@ const About = center => (
     <Header title="About Page">Gatsby Tutorial Starter</Header>
     <Container center={center}>
       <h3>
-        If you would like to build this site completely from scratch, you can
-        read the guide{' '}
-        <a href="https://justinformentin.com/gatsby-v2-guide">here.</a>
+        Hi again! As you can tell from my projects, I am interested in React
+        currently. This site is built with Gatsby (another one of my favs) Check
+        out my <a href="www.github.com/miaawong">Github</a> for more details!
       </h3>
     </Container>
   </Layout>
