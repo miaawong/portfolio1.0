@@ -21,8 +21,8 @@ const PostSuggestion = styled.div`
 
 const Post = ({ data, pageContext }) => {
   const { next, prev } = pageContext;
-  const {html, frontmatter, excerpt } = data.markdownRemark
-  const {date, title, tags, path, description} = frontmatter
+  const { html, frontmatter, excerpt } = data.markdownRemark;
+  const { date, title, tags, path, description } = frontmatter;
   const image = frontmatter.cover.childImageSharp.fluid;
 
   return (
@@ -37,24 +37,24 @@ const Post = ({ data, pageContext }) => {
       <Header title={title} date={date} cover={image} />
       <Container>
         <Content input={html} />
-        <TagsBlock list={tags || []} />
+        {/* <TagsBlock list={tags || []} /> */}
       </Container>
       <SuggestionBar>
         <PostSuggestion>
-          {prev && (
-            <Link to={prev.frontmatter.path}>
-              Previous
-              <h3>{prev.frontmatter.title}</h3>
-            </Link>
-          )}
+          {prev &&
+            //   <Link to={prev.frontmatter.path}>
+            Previous
+          //    <h3>{prev.frontmatter.title}</h3>
+          // </Link>
+          }
         </PostSuggestion>
         <PostSuggestion>
-          {next && (
-            <Link to={next.frontmatter.path}>
-              Next
-              <h3>{next.frontmatter.title}</h3>
-            </Link>
-          )}
+          {next &&
+            //    <Link to={next.frontmatter.path}>
+            Next
+          //     <h3>{next.frontmatter.title}</h3>
+          //   </Link>
+          }
         </PostSuggestion>
       </SuggestionBar>
     </Layout>

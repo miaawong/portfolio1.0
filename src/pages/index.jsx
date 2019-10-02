@@ -21,25 +21,27 @@ const PostWrapper = styled.div`
 `;
 
 const Index = ({ data }) => {
-  const { edges } = data.allMarkdownRemark;
+  const { edges } = data.allContentfulProjects;
+
   return (
     <Layout>
       <Helmet title={'MIAWONG.DEV'} />
       <Header title="Hi there 👋, I am Mia!">
         Frontend JavaScript Developer
       </Header>
+
       <PostWrapper>
         {edges.map(({ node }) => {
-          const { id, excerpt, frontmatter } = node;
-          const { cover, path, title, date } = frontmatter;
+          const { id, projectDesc, projectName, createdAt, projectImg } = node;
+
           return (
             <PostList
               key={id}
-              cover={cover.childImageSharp.fluid}
-              path={path}
-              title={title}
-              date={date}
-              excerpt={excerpt}
+              cover={projectImg.fluid}
+              //  path={path}
+              title={projectName}
+              date={createdAt}
+              excerpt={projectDesc}
             />
           );
         })}
@@ -50,56 +52,50 @@ const Index = ({ data }) => {
 
 export default Index;
 
-Index.propTypes = {
-  data: PropTypes.shape({
-    allMarkdownRemark: PropTypes.shape({
-      edges: PropTypes.arrayOf(
-        PropTypes.shape({
-          node: PropTypes.shape({
-            excerpt: PropTypes.string,
-            frontmatter: PropTypes.shape({
-              cover: PropTypes.object.isRequired,
-              path: PropTypes.string.isRequired,
-              title: PropTypes.string.isRequired,
-              date: PropTypes.string.isRequired,
-              tags: PropTypes.array,
-            }),
-          }),
-        }).isRequired
-      ),
-    }),
-  }),
-};
-
 export const query = graphql`
   query {
-    allMarkdownRemark(
-      limit: 6
-      sort: { order: DESC, fields: [frontmatter___date] }
-    ) {
+    allContentfulProjects {
       edges {
         node {
+          projectName
+          projectDesc
           id
-          excerpt(pruneLength: 75)
-          frontmatter {
-            title
-            path
-            tags
-            date(formatString: "MM.DD.YYYY")
-            cover {
-              childImageSharp {
-                fluid(
-                  maxWidth: 1000
-                  quality: 90
-                  traceSVG: { color: "#2B2B2F" }
-                ) {
-                  ...GatsbyImageSharpFluid_withWebp_tracedSVG
-                }
-              }
+          createdAt(formatString: "MM.DD.YYYY")
+          projectImg {
+            fluid(maxWidth: 1000, quality: 90) {
+              ...GatsbyContentfulFluid_tracedSVG
             }
           }
         }
       }
     }
+    #   allMarkdownRemark(
+    #     limit: 6
+    #     sort: { order: DESC, fields: [frontmatter___date] }
+    #   ) {
+    #     edges {
+    #       node {
+    #         id
+    #         excerpt(pruneLength: 75)
+    #         frontmatter {
+    #           title
+    #           path
+    #           tags
+    #           date(formatString: "MM.DD.YYYY")
+    #           cover {
+    #             childImageSharp {
+    #               fluid(
+    #                 maxWidth: 1000
+    #                 quality: 90
+    #                 traceSVG: { color: "#2B2B2F" }
+    #               ) {
+    #                 ...GatsbyImageSharpFluid_withWebp_tracedSVG
+    #               }
+    #             }
+    #           }
+    #         }
+    #       }
+    #     }
+    #   }
   }
 `;

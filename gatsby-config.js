@@ -1,4 +1,7 @@
 const config = require('./config/site');
+require('dotenv').config({
+  path: `.env.development`,
+});
 
 module.exports = {
   siteMetadata: {
@@ -12,6 +15,13 @@ module.exports = {
       options: {
         name: 'posts',
         path: `${__dirname}/content/posts`,
+      },
+    },
+    {
+      resolve: `gatsby-source-contentful`,
+      options: {
+        spaceId: process.env.CONTENTFUL_SPACE_ID,
+        accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
       },
     },
     'gatsby-transformer-sharp',
