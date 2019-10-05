@@ -1,5 +1,5 @@
 const config = require('./config/site');
-const path = require(`path`);
+
 require('dotenv').config({
   path: `.env.development`,
 });
@@ -14,8 +14,8 @@ module.exports = {
     {
       resolve: 'gatsby-source-filesystem',
       options: {
-        name: `images`,
-        path: path.join(__dirname, `src`, `images`),
+        name: 'posts',
+        path: `${__dirname}/content/posts`,
       },
     },
 
