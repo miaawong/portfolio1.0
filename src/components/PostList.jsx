@@ -105,18 +105,29 @@ const Title = styled.h2`
   margin-bottom: 0.6rem;
 `;
 
-const PostList = ({ cover, path, date, title, excerpt }) => (
+const PostList = ({
+  cover,
+  siteLink,
+  githubLink,
+  date,
+  title,
+  excerpt,
+  path,
+}) => (
   <Wrapper>
     <Image>
       <Img fluid={cover} />
     </Image>
-    {/* <StyledLink to={path}> */}
-    <Info>
-      {/* <span>{date}</span> */}
-      <Title>{title}</Title>
-      {/* <span>{excerpt}</span> */}
-    </Info>
-    {/* </StyledLink> */}
+
+    {/* siteLink needs to be rerouted to path.. ex: www.miawong.dev/reactweatherapp */}
+    <StyledLink to={path}>
+      <Info>
+        <span>{date}</span>
+        <Title>{title}</Title>
+        <span>{excerpt}</span>
+        {/* <button>{githubLink}</button> */}
+      </Info>
+    </StyledLink>
   </Wrapper>
 );
 

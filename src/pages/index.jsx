@@ -32,13 +32,24 @@ const Index = ({ data }) => {
 
       <PostWrapper>
         {edges.map(({ node }) => {
-          const { id, projectDesc, projectName, createdAt, projectImg } = node;
+          const {
+            id,
+            projectDesc,
+            projectName,
+            createdAt,
+            projectImg,
+            siteLink,
+            githubLink,
+            path,
+          } = node;
 
           return (
             <PostList
+              path={path}
               key={id}
               cover={projectImg.fluid}
-              //  path={path}
+              siteLink={siteLink}
+              githubLink={githubLink}
               title={projectName}
               date={createdAt}
               excerpt={projectDesc}
@@ -61,6 +72,9 @@ export const query = graphql`
           projectDesc
           id
           createdAt(formatString: "MM.DD.YYYY")
+          githubLink
+          siteLink
+          path
           projectImg {
             fluid(maxWidth: 1000, quality: 90) {
               ...GatsbyContentfulFluid_tracedSVG

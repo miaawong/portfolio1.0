@@ -3,6 +3,7 @@ import { Link } from 'gatsby';
 import styled from '@emotion/styled';
 import Headroom from 'react-headroom';
 import logo from '../../static/logo/mia.png';
+import resume from '../../resume/miawong.pdf';
 
 const StyledLink = styled(Link)`
   display: flex;
@@ -35,6 +36,9 @@ const NavBar = () => (
     <Nav>
       <Link to="/">Home</Link>
       <Link to="/about">About</Link>
+      <a href={resume} download>
+        Resume
+      </a>
     </Nav>
   </Headroom>
 );
