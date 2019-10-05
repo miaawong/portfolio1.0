@@ -1,4 +1,5 @@
 const config = require('./config/site');
+const path = require(`path`);
 require('dotenv').config({
   path: `.env.development`,
 });
@@ -13,10 +14,14 @@ module.exports = {
     {
       resolve: 'gatsby-source-filesystem',
       options: {
-        name: 'posts',
-        path: `${__dirname}/content/posts`,
+        name: `images`,
+        path: path.join(__dirname, `src`, `images`),
       },
     },
+
+    `gatsby-plugin-sharp`,
+    `gatsby-transformer-sharp`,
+
     {
       resolve: `gatsby-source-contentful`,
       options: {
@@ -24,7 +29,7 @@ module.exports = {
         accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
       },
     },
-    'gatsby-transformer-sharp',
+
     {
       resolve: 'gatsby-transformer-remark',
       options: {
@@ -55,7 +60,7 @@ module.exports = {
         pathToConfigModule: 'config/typography.js',
       },
     },
-    'gatsby-plugin-sharp',
+
     'gatsby-plugin-sitemap',
     {
       resolve: 'gatsby-plugin-manifest',

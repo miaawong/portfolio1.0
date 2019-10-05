@@ -20,11 +20,6 @@ const PostSuggestion = styled.div`
 `;
 
 const Post = ({ data, pageContext }) => {
-  const { next, prev } = pageContext;
-  const { html, frontmatter, excerpt } = data.markdownRemark;
-  const { date, title, tags, path, description } = frontmatter;
-  const image = frontmatter.cover.childImageSharp.fluid;
-
   return (
     <Layout>
       <SEO
@@ -71,29 +66,8 @@ Post.propTypes = {
   data: PropTypes.object.isRequired,
 };
 
-export const query = graphql`
-  query($pathSlug: String!) {
-    markdownRemark(frontmatter: { path: { eq: $pathSlug } }) {
-      html
-      frontmatter {
-        date
-        title
-        tags
-        cover {
-          childImageSharp {
-            fluid(
-              maxWidth: 1920
-              quality: 90
-              duotone: { highlight: "#386eee", shadow: "#2323be", opacity: 60 }
-            ) {
-              ...GatsbyImageSharpFluid_withWebp
-            }
-            resize(width: 1200, quality: 90) {
-              src
-            }
-          }
-        }
-      }
-    }
-  }
-`;
+// export const query = graphql`
+//   query($pathSlug: String!) {
+
+//   }
+// `;

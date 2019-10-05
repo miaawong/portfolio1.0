@@ -4,7 +4,7 @@ exports.createPages = ({ graphql, actions }) => {
   const { createPage } = actions;
 
   return new Promise((resolve, reject) => {
-    const postTemplate = path.resolve('src/templates/post.jsx');
+    const postTemplate = path.resolve('src/pages/about.jsx');
     const tagPage = path.resolve('src/pages/tags.jsx');
     const tagPosts = path.resolve('src/templates/tag.jsx');
 
@@ -18,12 +18,8 @@ exports.createPages = ({ graphql, actions }) => {
                   projectName
                   projectDesc
                   id
+                  path
                   createdAt(formatString: "MM.DD.YYYY")
-                  projectImg {
-                    fluid(maxWidth: 1000, quality: 90) {
-                      ...GatsbyContentfulFluid_tracedSVG
-                    }
-                  }
                 }
               }
             }
@@ -76,7 +72,7 @@ exports.createPages = ({ graphql, actions }) => {
 
         //create posts
         posts.forEach(({ node }, index) => {
-          const path = node.projectName;
+          const path = node.path;
           const prev = index === 0 ? null : posts[index - 1].node;
           const next =
             index === posts.length - 1 ? null : posts[index + 1].node;
