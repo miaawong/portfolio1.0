@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 
 const Wrapper = styled.header`
   background: ${props => props.theme.gradient.leftToRight};
-  height: 500px;
+  height: 450px;
   @media (max-width: ${props => props.theme.breakpoints.m}) {
     height: 400px;
   }
@@ -36,6 +36,8 @@ const Text = styled.div`
 const Subtitle = styled.p`
   max-width: 650px;
   color: ${props => props.theme.colors.white.light};
+  font-weight: ${props => props.theme.fontWeight.body};
+  font-size: 1.2rem;
 `;
 
 const Header = ({ children, title, date, cover }) => (

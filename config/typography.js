@@ -12,6 +12,7 @@ export const typography = new Typography({
     'Roboto',
     'Helvetica',
     'Arial',
+    'Oswald',
     'sans-serif',
   ],
   bodyFontFamily: [
@@ -22,6 +23,7 @@ export const typography = new Typography({
     'Roboto',
     'Helvetica',
     'Arial',
+    'Oswald',
     'sans-serif',
   ],
   headerWeight: 500,

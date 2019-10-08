@@ -94,6 +94,7 @@ const Image = styled.div`
 `;
 
 const Info = styled.div`
+  font-family: ${props => props.theme.fontFamily.body};
   color: ${props => props.theme.colors.white.light};
   margin: 0 1rem 1.25rem 1.25rem;
   position: absolute;
@@ -103,6 +104,9 @@ const Info = styled.div`
 
 const Title = styled.h2`
   margin-bottom: 0.6rem;
+  font-family: ${props => props.theme.fontFamily.body};
+  font-weight: 1000;
+  font-size: 2rem;
 `;
 
 const PostList = ({
@@ -119,7 +123,6 @@ const PostList = ({
       <Img fluid={cover} />
     </Image>
 
-    {/* siteLink needs to be rerouted to path.. ex: www.miawong.dev/reactweatherapp */}
     <StyledLink to={path}>
       <Info>
         <span>{date}</span>
@@ -133,10 +136,10 @@ const PostList = ({
 
 export default PostList;
 
-// PostList.propTypes = {
-//   cover: PropTypes.object.isRequired,
-//   path: PropTypes.string.isRequired,
-//   excerpt: PropTypes.string,
-//   date: PropTypes.string.isRequired,
-//   title: PropTypes.string.isRequired,
-// };
+PostList.propTypes = {
+  cover: PropTypes.object.isRequired,
+  path: PropTypes.string.isRequired,
+  excerpt: PropTypes.string,
+  date: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+};

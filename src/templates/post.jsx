@@ -8,48 +8,67 @@ import '../styles/prism';
 
 const SuggestionBar = styled.div`
   display: flex;
-  flex-wrap: nowrap;
-  justify-content: space-between;
-  background: ${props => props.theme.colors.white.light};
-  box-shadow: ${props => props.theme.shadow.suggestion};
+  flex-direction: row; 
+  flex-wrap: wrap;
+  width: 200px; 
+  /* background: ${props => props.theme.colors.white.light}; */
+   box-shadow: ${props => props.theme.shadow.suggestion}; 
+border-radius: 20px; 
 `;
 const PostSuggestion = styled.div`
   display: flex;
   align-items: center;
   margin: 1rem 3rem 0 3rem;
+  a {
+    font-family: ${props => props.theme.fontFamily.body};
+    font-weight: 400;
+    color: black;
+    text-decoration: none;
+  }
 `;
 
 const Post = ({ data, pageContext }) => {
+  const { next, prev } = pageContext;
+  const {
+    projectName,
+    projectDesc,
+    projectImg,
+    path,
+    createdAt,
+  } = data.contentfulProjects;
+
   return (
     <Layout>
       <SEO
-        title={title}
-        description={description || excerpt || ' '}
-        banner={image}
+        title={projectName}
+        description={projectDesc}
+        banner={projectImg}
         pathname={path}
         article
       />
-      <Header title={title} date={date} cover={image} />
+      <Header title={projectName} date={createdAt} cover={projectImg} />
       <Container>
-        <Content input={html} />
+        {/* <Content input={html} /> */}
         {/* <TagsBlock list={tags || []} /> */}
       </Container>
       <SuggestionBar>
         <PostSuggestion>
-          {prev &&
-            //   <Link to={prev.frontmatter.path}>
-            Previous
-          //    <h3>{prev.frontmatter.title}</h3>
-          // </Link>
-          }
+          {prev && (
+            <Link to={prev.path}>
+              Previous
+              <h3>{prev.projectName}</h3>
+            </Link>
+          )}
         </PostSuggestion>
+      </SuggestionBar>
+      <SuggestionBar>
         <PostSuggestion>
-          {next &&
-            //    <Link to={next.frontmatter.path}>
-            Next
-          //     <h3>{next.frontmatter.title}</h3>
-          //   </Link>
-          }
+          {next && (
+            <Link to={next.path}>
+              Next
+              <h3>{next.projectName}</h3>
+            </Link>
+          )}
         </PostSuggestion>
       </SuggestionBar>
     </Layout>
@@ -66,8 +85,20 @@ Post.propTypes = {
   data: PropTypes.object.isRequired,
 };
 
-// export const query = graphql`
-//   query($pathSlug: String!) {
-
-//   }
-// `;
+export const query = graphql`
+  query($pathSlug: String!) {
+    contentfulProjects(path: { eq: $pathSlug }) {
+      githubLink
+      createdAt(formatString: "MM/DD/YYYY")
+      path
+      projectDesc
+      projectImg {
+        fluid {
+          ...GatsbyContentfulFluid_tracedSVG
+        }
+      }
+      projectName
+      siteLink
+    }
+  }
+`;

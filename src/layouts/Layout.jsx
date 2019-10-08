@@ -51,7 +51,12 @@ const Layout = ({ children }) => (
             color: ${theme.colors.linkHover};
           }
           h1 {
-            font-family: ${theme.fontFamily.heading};
+            font-family: ${theme.fontFamily.body};
+            font-size: 3rem;
+          }
+          h3 {
+            font-family: ${theme.fontFamily.body};
+            font-weight: ${theme.fontWeight};
           }
 
           ${headroom}

@@ -71,7 +71,7 @@ export const query = graphql`
           projectName
           projectDesc
           id
-          createdAt(formatString: "MM.DD.YYYY")
+          createdAt(formatString: "MM/DD/YYYY")
           githubLink
           siteLink
           path
@@ -83,33 +83,5 @@ export const query = graphql`
         }
       }
     }
-    #   allMarkdownRemark(
-    #     limit: 6
-    #     sort: { order: DESC, fields: [frontmatter___date] }
-    #   ) {
-    #     edges {
-    #       node {
-    #         id
-    #         excerpt(pruneLength: 75)
-    #         frontmatter {
-    #           title
-    #           path
-    #           tags
-    #           date(formatString: "MM.DD.YYYY")
-    #           cover {
-    #             childImageSharp {
-    #               fluid(
-    #                 maxWidth: 1000
-    #                 quality: 90
-    #                 traceSVG: { color: "#2B2B2F" }
-    #               ) {
-    #                 ...GatsbyImageSharpFluid_withWebp_tracedSVG
-    #               }
-    #             }
-    #           }
-    #         }
-    #       }
-    #     }
-    #   }
   }
 `;
