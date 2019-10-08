@@ -6,15 +6,26 @@ import { Layout, Container, Content } from 'layouts';
 import { TagsBlock, Header, SEO } from 'components';
 import '../styles/prism';
 
+const SuggestionContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+`;
 const SuggestionBar = styled.div`
   display: flex;
-  flex-direction: row; 
   flex-wrap: wrap;
-  width: 200px; 
-  /* background: ${props => props.theme.colors.white.light}; */
-   box-shadow: ${props => props.theme.shadow.suggestion}; 
-border-radius: 20px; 
+  box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.1);
+  border-radius: 20px;
+  &:hover {
+    -webkit-transform: scale(1.2);
+    -ms-transform: scale(1.2);
+    transform: scale(1.2);
+    transition-duration: 0.5s;
+    background-color: ${props => props.theme.colors.background.light};
+  }
 `;
+
 const PostSuggestion = styled.div`
   display: flex;
   align-items: center;
@@ -36,6 +47,7 @@ const Post = ({ data, pageContext }) => {
     path,
     createdAt,
   } = data.contentfulProjects;
+  const isTrue = prev;
 
   return (
     <Layout>
@@ -51,26 +63,40 @@ const Post = ({ data, pageContext }) => {
         {/* <Content input={html} /> */}
         {/* <TagsBlock list={tags || []} /> */}
       </Container>
-      <SuggestionBar>
-        <PostSuggestion>
-          {prev && (
-            <Link to={prev.path}>
-              Previous
-              <h3>{prev.projectName}</h3>
-            </Link>
-          )}
-        </PostSuggestion>
-      </SuggestionBar>
-      <SuggestionBar>
-        <PostSuggestion>
-          {next && (
-            <Link to={next.path}>
-              Next
-              <h3>{next.projectName}</h3>
-            </Link>
-          )}
-        </PostSuggestion>
-      </SuggestionBar>
+      <SuggestionContainer>
+        <SuggestionBar>
+          <PostSuggestion>
+            {prev ? (
+              prev && (
+                <Link to={prev.path}>
+                  Previous
+                  <h3>{prev.projectName || 'Home'}</h3>
+                </Link>
+              )
+            ) : (
+              <Link to="/">
+                <h3>Home</h3>
+              </Link>
+            )}
+          </PostSuggestion>
+        </SuggestionBar>
+        <SuggestionBar>
+          <PostSuggestion>
+            {next ? (
+              next && (
+                <Link to={next.path}>
+                  Next
+                  <h3>{next.projectName || 'Home'}</h3>
+                </Link>
+              )
+            ) : (
+              <Link to="/">
+                <h3>Home</h3>
+              </Link>
+            )}
+          </PostSuggestion>
+        </SuggestionBar>
+      </SuggestionContainer>
     </Layout>
   );
 };
