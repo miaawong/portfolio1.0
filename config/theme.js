@@ -69,12 +69,8 @@ export const theme = {
     body: '700',
   },
   fontFamily: {
-    // eslint-disable-next-line
-    // body: `Open Sans,-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'`,
     body: `Oswald, sans-serif`,
-    // eslint-disable-next-line
-    // heading: `Oswald, sans-serif`,
-    heading: `Candal, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'`,
+    heading: `Oswald, sans-serif`,
   },
   layout: {
     article: '46rem',
