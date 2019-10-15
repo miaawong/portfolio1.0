@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 
 const Wrapper = styled.header`
   background: ${props => props.theme.gradient.leftToRight};
-  height: 450px;
+  height: 40vh;
   @media (max-width: ${props => props.theme.breakpoints.m}) {
     height: 400px;
   }

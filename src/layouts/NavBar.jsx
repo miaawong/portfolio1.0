@@ -7,6 +7,7 @@ import resume from '../../resume/miawong.pdf';
 import { FaGithub } from 'react-icons/fa';
 
 const Nav = styled.nav`
+  height: 4vh;
   display: flex;
   justify-content: flex-end;
   font-family: ${props => props.theme.fontFamily.body};
@@ -14,18 +15,22 @@ const Nav = styled.nav`
   font-size: 1.2rem;
   align-items: center;
   a {
-    color: ${props => props.theme.colors.white.base};
+    color: ${props => props.theme.colors.black.base};
     margin-left: 2rem;
     transition: all ${props => props.theme.transitions.default.duration};
     &:hover {
-      color: black;
+      color: ${props => props.theme.colors.background.dark};
     }
   }
+`;
+const Image = styled.img`
+  margin: 0;
+  height: 4vh;
 `;
 
 const NavBar = () => (
   <Headroom calcHeightOnResize disableInlineStyles>
-    <img src={logo} alt="miawong logo" />
+    <Image src={logo} alt="miawong logo" />
     <Nav>
       <Link to="/">Home</Link>
       <Link to="/about">About</Link>

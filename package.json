@@ -1,9 +1,9 @@
 {
-  "name": "gatsby-tutorial-starter",
-  "author": "Justin Formentin",
-  "title": "Gatsby V2 Tutorial Starter",
-  "description": "My Blog",
-  "homepage": "https://gatsby-tutorial-starter.netlify.com",
+  "name": "MIAWONG.DEV",
+  "author": "Mia Wong",
+  "title": "MIAWONG.DEV",
+  "description": "About Mia",
+  "homepage": "https://miawong.dev",
   "license": "MIT",
   "version": "0.0.7",
   "repository": {
@@ -68,6 +68,7 @@
     "prettier": "^1.18.2"
   },
   "keywords": [
+    "mia wong",
     "justin formentin",
     "personal blog",
     "tutorial",

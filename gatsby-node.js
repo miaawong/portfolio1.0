@@ -72,6 +72,7 @@ exports.createPages = ({ graphql, actions }) => {
 
         //create posts
         posts.forEach(({ node }, index) => {
+          console.log(index);
           const path = node.path;
           const prev = index === 0 ? null : posts[index - 1].node;
           const next =

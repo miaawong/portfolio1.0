@@ -42,13 +42,8 @@ const Layout = ({ children }) => (
             min-height: 100vh;
           }
           a {
-            color: ${theme.colors.link};
             transition: color 0.5s;
             text-decoration: none;
-          }
-          a:hover {
-            text-decoration: none;
-            color: ${theme.colors.linkHover};
           }
           h1 {
             font-family: ${theme.fontFamily.body};

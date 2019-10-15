@@ -3,7 +3,8 @@ import theme from '../../config/theme';
 
 const headroom = css`
   .headroom-wrapper {
-    position: fixed;
+    height: 100% !important;
+    position: relative;
     width: 100%;
     z-index: 2000;
     top: 0;
@@ -13,8 +14,9 @@ const headroom = css`
     justify-content: space-between;
     flex-direction: row;
     width: 100%;
-    padding: 1rem 1.5rem;
+    padding: 1.5rem;
     svg {
+      margin: 0;
       height: 2.5rem;
       g {
         fill: ${theme.colors.white.base};
