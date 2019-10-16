@@ -6,45 +6,10 @@ import PropTypes from 'prop-types';
 import NavBar from 'layouts/NavBar';
 import { PostLayout, Layout } from 'layouts';
 import { TagsBlock, Header, SEO, PostList } from 'components';
+import Suggestions from '../components/Suggestions.jsx';
 import { FaGithub, FaLaptop } from 'react-icons/fa';
 import '../styles/prism';
 
-const SuggestionContainer = styled.div`
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: space-between;
-`;
-const SuggestionBar = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.1);
-  border-radius: 10px;
-  margin-top: 1rem;
-  background-color: ${props => props.theme.colors.background.dark};
-  &:hover {
-    -webkit-transform: scale(1.2);
-    -ms-transform: scale(1.2);
-    transform: scale(1.1);
-    transition-duration: 0.5s;
-  }
-`;
-
-const PostSuggestion = styled.div`
-  display: flex;
-  align-items: center;
-  margin: 0;
-  padding: 10px;
-  h3 {
-    margin: 0;
-  }
-  a {
-    font-family: ${props => props.theme.fontFamily.body};
-    font-weight: 400;
-    color: ${props => props.theme.colors.background.light};
-    text-decoration: none;
-  }
-`;
 const ProjectContainer = styled.div`
   display: flex;
   flex-direction: row;
@@ -52,10 +17,10 @@ const ProjectContainer = styled.div`
   justify-content: space-between;
 `;
 const Image = styled.div`
-  width: 50%;
+  width: 55%;
   position: relative;
   overflow: hidden;
-  height: 35vh !important;
+  height: 100%;
   float: left;
   @media (max-width: ${props => props.theme.breakpoints.s}) {
     display: none;
@@ -65,8 +30,8 @@ const Image = styled.div`
   }
 `;
 const ProjectInfo = styled.div`
-  width: 50%;
   float: right;
+  width: 45%;
   margin: auto;
   text-align: center;
   height: 40%;
@@ -101,23 +66,22 @@ const ProjectName = styled.h2`
   background-color: ${props => props.theme.colors.background.dark};
   color: ${props => props.theme.colors.white.base};
 `;
-const Wrapper = styled.article`
-  border-radius: ${props => props.theme.borderRadius.default};
-  box-shadow: ${props => props.theme.shadow.feature.small.default};
-  transition: ${props => props.theme.transitions.boom.transition};
-  height: 17rem;
-  flex-basis: calc(99.9% * 1 / 2 - 1rem);
-  max-width: calc(99.9% * 1 / 2 - 1rem);
-  width: calc(99.9% * 1 / 2 - 1rem);
-  &:hover {
-    box-shadow: ${props => props.theme.shadow.feature.small.hover};
-    transform: scale(1.04);
+const SuggestionsContainer = styled.div`
+  margin: 50px auto;
+  h2 {
+    font-family: ${props => props.theme.fontFamily.body};
+    text-align: center;
+    font-weight: 600;
+  }
+  hr {
+    width: 50%;
+    margin: 20px auto;
   }
 `;
 
 const Post = ({ data, pageContext }) => {
-  const index = 0;
-  const posts = data.allContentfulProjects.edges;
+  // const posts = data.allContentfulProjects.edges;
+  const { prev, next } = pageContext;
 
   const {
     projectName,
@@ -140,7 +104,7 @@ const Post = ({ data, pageContext }) => {
         pathname={path}
         article
       />
-      <Header cover={image} />
+
       <ProjectContainer>
         <Image>
           <Img fluid={image} objectFit="cover" />
@@ -158,56 +122,11 @@ const Post = ({ data, pageContext }) => {
 
         {/* <TagsBlock list={tags || []} /> */}
       </ProjectContainer>
-
-      <Wrapper>
-        {posts.forEach(({ node }, index) => {
-          const path = node.path;
-          const prev = index === 0 ? null : posts[index - 1].node;
-          const next =
-            index === posts.length - 1 ? null : posts[index + 1].node;
-
-          console.log(path);
-
-          return (
-            <Link to={path}>{/* <h3>{prev.projectName || 'Home'}</h3> */}</Link>
-          );
-        })}
-      </Wrapper>
-
-      {/* <SuggestionContainer>
-        <SuggestionBar>
-          <PostSuggestion>
-            {prev ? (
-              prev && (
-                <Link to={prev.path}>
-                  Previous
-                  <h3>{prev.projectName || 'Home'}</h3>
-                </Link>
-              )
-            ) : (
-              <Link to="/">
-                <h3>Home</h3>
-              </Link>
-            )}
-          </PostSuggestion>
-        </SuggestionBar>
-        <SuggestionBar>
-          <PostSuggestion>
-            {next ? (
-              next && (
-                <Link to={next.path}>
-                  Next
-                  <h3>{next.projectName || 'Home'}</h3>
-                </Link>
-              )
-            ) : (
-              <Link to="/">
-                <h3>Home</h3>
-              </Link>
-            )}
-          </PostSuggestion>
-        </SuggestionBar>
-      </SuggestionContainer> */}
+      <SuggestionsContainer>
+        <hr />
+        <h2> MORE PROJECTS</h2>
+      </SuggestionsContainer>
+      <Suggestions prev={prev} next={next} />
     </Layout>
   );
 };
@@ -233,29 +152,11 @@ export const ONE_POST = graphql`
       projectImg {
         fluid(maxWidth: 1920, quality: 90) {
           ...GatsbyContentfulFluid_tracedSVG
+          src
         }
       }
       projectName
       siteLink
-    }
-
-    allContentfulProjects {
-      edges {
-        node {
-          projectName
-          projectDesc
-          id
-          createdAt(formatString: "MM/DD/YYYY")
-          githubLink
-          siteLink
-          path
-          projectImg {
-            fluid(maxWidth: 1000, quality: 90) {
-              ...GatsbyContentfulFluid_tracedSVG
-            }
-          }
-        }
-      }
     }
   }
 `;

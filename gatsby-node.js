@@ -20,6 +20,15 @@ exports.createPages = ({ graphql, actions }) => {
                   id
                   path
                   createdAt(formatString: "MM.DD.YYYY")
+                  projectImg {
+                    localFile {
+                      childImageSharp {
+                        fluid(maxWidth: 600) {
+                          src
+                        }
+                      }
+                    }
+                  }
                 }
               }
             }
