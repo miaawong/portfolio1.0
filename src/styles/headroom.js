@@ -14,7 +14,7 @@ const headroom = css`
     justify-content: space-between;
     flex-direction: row;
     width: 100%;
-    padding: 1.5rem;
+    padding: 1.5rem 1.5rem 0 1.5rem;
     svg {
       margin: 0;
       height: 2.5rem;

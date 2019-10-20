@@ -62,7 +62,7 @@ export const theme = {
   breakpoints: {
     xs: '400px',
     s: '600px',
-    m: '900px',
+    m: '1000px',
     l: '1200px',
   },
   fontWeight: {

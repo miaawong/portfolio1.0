@@ -23,14 +23,21 @@ const Nav = styled.nav`
     }
   }
 `;
-const Image = styled.img`
-  margin: 0;
-  height: 4vh;
+// const Image = styled.img`
+//   margin: 0;
+//   height: 4vh;
+// `;
+const StyledLink = styled(Link)`
+  display: flex;
+  font-weight: 700;
+  align-items: center;
 `;
 
 const NavBar = () => (
   <Headroom calcHeightOnResize disableInlineStyles>
-    <Image src={logo} alt="miawong logo" />
+    <StyledLink to="/">
+      <img src={logo} alt="Gatsby Logo" />
+    </StyledLink>
     <Nav>
       <Link to="/">Home</Link>
       <Link to="/about">About</Link>

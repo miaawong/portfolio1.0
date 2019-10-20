@@ -17,6 +17,8 @@ const Wrapper = styled.header`
 `;
 
 const Text = styled.div`
+  font-weight: 800;
+  font-size: 50px;
   color: ${props => props.theme.colors.white.base};
   z-index: 0;
   position: absolute;
@@ -31,6 +33,21 @@ const Text = styled.div`
   padding: 0 2rem;
   margin-bottom: 3rem;
   align-items: center;
+  h1 {
+    text-align: center;
+    font-weight: 800;
+    font-size: 50px;
+  }
+  a {
+    display: inline-block;
+    text-decoration: none;
+    padding: 5px 50px;
+    color: black;
+  }
+  a:hover {
+    border-radius: 10px;
+    background-color: ${props => props.theme.colors.white.base};
+  }
 `;
 
 const Subtitle = styled.p`
