@@ -34,7 +34,7 @@ const Index = ({ data }) => {
         {edges.map(({ node }) => {
           const {
             id,
-            projectDesc,
+            shortDesc,
             projectName,
             createdAt,
             projectImg,
@@ -52,7 +52,9 @@ const Index = ({ data }) => {
               githubLink={githubLink}
               title={projectName}
               date={createdAt}
-              excerpt={projectDesc}
+              // need to figure out a way to limit the description to about 50 letters
+              //or so in query, is that possible?
+              excerpt={shortDesc}
             />
           );
         })}
@@ -75,6 +77,7 @@ export const query = graphql`
           githubLink
           siteLink
           path
+          shortDesc
           projectImg {
             fluid(maxWidth: 1000, quality: 90) {
               ...GatsbyContentfulFluid_tracedSVG

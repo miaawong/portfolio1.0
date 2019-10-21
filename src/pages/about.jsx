@@ -22,20 +22,14 @@ const SkillsContainer = styled.div`
   grid-template-columns: repeat(4, 1fr);
   justify-content: center;
   color: black;
-
   p {
-    /* margin: 10px 10px; */
     padding: 10px 10px;
-    background-color: #cc3333;
-    border: 3px solid white;
+    background-color: ${props => props.theme.colors.background.dark};
+    color: ${props => props.theme.colors.white.light};
     border-radius: 10px;
     @media (max-width: ${props => props.theme.breakpoints.m}) {
       padding: 5px;
     }
-  }
-  p:hover {
-    background-color: white;
-    border: 3px solid #cc3333;
   }
 `;
 const SkillsBlock = styled.div`

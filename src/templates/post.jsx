@@ -3,9 +3,9 @@ import { graphql, Link } from 'gatsby';
 import Img from 'gatsby-image';
 import styled from '@emotion/styled';
 import PropTypes from 'prop-types';
-import NavBar from 'layouts/NavBar';
-import { PostLayout, Layout } from 'layouts';
-import { TagsBlock, Header, SEO, PostList } from 'components';
+import { Layout } from 'layouts';
+import { SEO } from 'components';
+import PostHeader from '../components/PostHeader';
 import Suggestions from '../components/Suggestions.jsx';
 import { FaGithub, FaLaptop } from 'react-icons/fa';
 import '../styles/prism';
@@ -20,6 +20,28 @@ const Image = styled.div`
   img {
     margin: 0;
   }
+  @media (max-width: ${props => props.theme.breakpoints.s}) {
+    width: 100%;
+  }
+`;
+const Tags = styled.div`
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  margin: 30px 20px;
+`;
+const Tag = styled.span`
+  margin: 10px;
+  padding: 5px 25px;
+  background-color: ${props => props.theme.colors.background.dark};
+  color: ${props => props.theme.colors.white.light};
+  border-radius: 10px;
+  @media (max-width: ${props => props.theme.breakpoints.m}) {
+    padding: 5px;
+  }
+  &:last-child {
+    margin: 10px;
+  }
 `;
 const SuggestionsContainer = styled.div`
   margin: 50px auto;
@@ -30,14 +52,13 @@ const SuggestionsContainer = styled.div`
   }
   hr {
     width: 50%;
-    margin: 20px auto;
+    height: 3px;
+    margin: 10px auto;
   }
 `;
 
 const Post = ({ data, pageContext }) => {
-  // const posts = data.allContentfulProjects.edges;
   const { prev, next } = pageContext;
-
   const {
     projectName,
     projectDesc,
@@ -47,6 +68,7 @@ const Post = ({ data, pageContext }) => {
     id,
     githubLink,
     siteLink,
+    tags,
   } = data.contentfulProjects;
   const image = projectImg.fluid;
 
@@ -59,27 +81,28 @@ const Post = ({ data, pageContext }) => {
         pathname={path}
         article
       />
-      <Header title={projectName}>
-        <h3>{projectDesc}</h3>
+      <PostHeader title={projectName} desc={projectDesc}>
         <a href={githubLink}>
           View Source <FaGithub />
         </a>
         <a href={siteLink}>
           Demo <FaLaptop />
         </a>
-      </Header>
+        <Tags>
+          {tags.map(tags => {
+            return <Tag>{tags}</Tag>;
+          })}
+        </Tags>
+      </PostHeader>
 
       <ProjectContainer>
         <Image>
-          <img src={image.src} />
-          {/* <Img fluid={image} objectFit="cover" /> */}
+          <Img fluid={image} objectFit="cover" />
         </Image>
-
-        {/* <TagsBlock list={tags || []} /> */}
       </ProjectContainer>
       <SuggestionsContainer>
-        {/* <hr /> */}
         <h2> MORE PROJECTS</h2>
+        <hr />
       </SuggestionsContainer>
       <Suggestions prev={prev} next={next} />
     </Layout>
@@ -110,6 +133,7 @@ export const ONE_POST = graphql`
           src
         }
       }
+      tags
       projectName
       siteLink
     }

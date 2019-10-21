@@ -14,19 +14,29 @@ const Nav = styled.nav`
   font-weight: 600;
   font-size: 1.2rem;
   align-items: center;
+  @media (max-width: ${props => props.theme.breakpoints.s}) {
+    font-size: 1rem;
+  }
+  @media (max-width: ${props => props.theme.breakpoints.xs}) {
+    width: 100%;
+    font-size: 1rem;
+  }
   a {
     color: ${props => props.theme.colors.black.base};
-    margin-left: 2rem;
+    margin: 0 1.5rem;
     transition: all ${props => props.theme.transitions.default.duration};
     &:hover {
       color: ${props => props.theme.colors.background.dark};
     }
+    @media (max-width: ${props => props.theme.breakpoints.s}) {
+      margin: 0 5px;
+    }
+    @media (max-width: ${props => props.theme.breakpoints.xs}) {
+      margin: 0 5px;
+    }
   }
 `;
-// const Image = styled.img`
-//   margin: 0;
-//   height: 4vh;
-// `;
+
 const StyledLink = styled(Link)`
   display: flex;
   font-weight: 700;
@@ -39,7 +49,6 @@ const NavBar = () => (
       <img src={logo} alt="Gatsby Logo" />
     </StyledLink>
     <Nav>
-      <Link to="/">Home</Link>
       <Link to="/about">About</Link>
       <a href={resume} download>
         Resume

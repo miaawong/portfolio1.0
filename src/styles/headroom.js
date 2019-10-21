@@ -3,24 +3,24 @@ import theme from '../../config/theme';
 
 const headroom = css`
   .headroom-wrapper {
-    height: 100% !important;
+    height: 10vh !important;
     position: relative;
-    width: 100%;
     z-index: 2000;
     top: 0;
+    width: 100%;
   }
   .headroom {
     display: flex;
     justify-content: space-between;
     flex-direction: row;
     width: 100%;
-    padding: 1.5rem 1.5rem 0 1.5rem;
+    padding: 1.5rem 1.5rem;
     svg {
       margin: 0;
       height: 2.5rem;
-      g {
+      /* g {
         fill: ${theme.colors.white.base};
-      }
+      } */
     }
   }
   .headroom--unfixed {

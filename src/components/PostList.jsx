@@ -128,7 +128,6 @@ const PostList = ({
         <span>{date}</span>
         <Title>{title}</Title>
         <span>{excerpt}</span>
-        {/* <button>{githubLink}</button> */}
       </Info>
     </StyledLink>
   </Wrapper>
