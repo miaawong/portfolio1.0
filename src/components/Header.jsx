@@ -30,8 +30,7 @@ const Text = styled.div`
   text-align: center;
   width: 100%;
   max-width: ${props => props.theme.layout.base};
-  padding: 0 2rem;
-  margin-bottom: 3rem;
+  padding: 3rem 2rem;
   align-items: center;
   h1 {
     text-align: center;
@@ -43,10 +42,10 @@ const Text = styled.div`
     text-decoration: none;
     padding: 5px 50px;
     color: black;
-  }
-  a:hover {
     border-radius: 10px;
-    background-color: ${props => props.theme.colors.white.base};
+    &:hover {
+      background-color: ${props => props.theme.colors.white.base};
+    }
   }
 `;
 

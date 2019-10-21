@@ -14,25 +14,13 @@ const Nav = styled.nav`
   font-weight: 600;
   font-size: 1.2rem;
   align-items: center;
-  @media (max-width: ${props => props.theme.breakpoints.s}) {
-    font-size: 1rem;
-  }
-  @media (max-width: ${props => props.theme.breakpoints.xs}) {
-    width: 100%;
-    font-size: 1rem;
-  }
+
   a {
     color: ${props => props.theme.colors.black.base};
     margin: 0 1.5rem;
     transition: all ${props => props.theme.transitions.default.duration};
     &:hover {
       color: ${props => props.theme.colors.background.dark};
-    }
-    @media (max-width: ${props => props.theme.breakpoints.s}) {
-      margin: 0 5px;
-    }
-    @media (max-width: ${props => props.theme.breakpoints.xs}) {
-      margin: 0 5px;
     }
   }
 `;
@@ -50,12 +38,7 @@ const NavBar = () => (
     </StyledLink>
     <Nav>
       <Link to="/about">About</Link>
-      <a href={resume} download>
-        Resume
-      </a>
-      <a href="https://github.com/miaawong">
-        <FaGithub size="50" />
-      </a>
+      <Link to="/portfolio">Portfolio</Link>
     </Nav>
   </Headroom>
 );

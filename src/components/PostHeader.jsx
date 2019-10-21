@@ -11,9 +11,10 @@ const Wrapper = styled.header`
   @media (max-width: ${props => props.theme.breakpoints.m}) {
     height: 600px;
   }
-  @media (max-width: ${props => props.theme.breakpoints.s}) {
-    height: 600px;
+  @media (max-width: ${props => props.theme.breakpoints.xs}) {
+    height: 800px;
   }
+
   position: relative;
   overflow: hidden;
   display: flex;
@@ -35,20 +36,12 @@ const TitleDesc = styled.div`
   @media (max-width: ${props => props.theme.breakpoints.l}) {
     width: 100%;
     padding-top: 50px;
-  }
-  @media (max-width: ${props => props.theme.breakpoints.m}) {
-    width: 100%;
-    padding-top: 50px;
     h1 {
       font-size: 40px;
     }
     h2 {
       font-size: 25px;
     }
-  }
-  @media (max-width: ${props => props.theme.breakpoints.s}) {
-    width: 100%;
-    padding-top: 50px;
   }
 `;
 const Tech = styled.div`
@@ -59,8 +52,8 @@ const Tech = styled.div`
   a {
     display: inline-block;
     text-decoration: none;
-    padding: 5px 25px;
-    margin: 0 10px;
+    padding: 10px;
+    margin: 5px 1.5rem;
     color: ${props => props.theme.colors.black.base};
     background-color: ${props => props.theme.colors.white.base};
     border-radius: 10px;
@@ -71,10 +64,7 @@ const Tech = styled.div`
       transition-duration: ${props => props.theme.transitions.boom.duration};
     }
   }
-  @media (max-width: ${props => props.theme.breakpoints.m}) {
-    width: 100%;
-  }
-  @media (max-width: ${props => props.theme.breakpoints.s}) {
+  @media (max-width: ${props => props.theme.breakpoints.l}) {
     width: 100%;
   }
 `;
@@ -84,9 +74,6 @@ const Subtitle = styled.p`
   color: ${props => props.theme.colors.white.light};
   font-weight: ${props => props.theme.fontWeight.body};
   font-size: 1.2rem;
-  @media (max-width: ${props => props.theme.breakpoints.m}) {
-    font-size: 1rem;
-  }
   @media (max-width: ${props => props.theme.breakpoints.s}) {
     width: 100%;
     font-size: 1rem;

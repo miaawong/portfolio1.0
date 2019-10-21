@@ -1,12 +1,10 @@
 import React from 'react';
 import { graphql } from 'gatsby';
-import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
+import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 import { Header, PostList } from 'components';
 import { Layout } from 'layouts';
-import resume from '../../resume/miawong.pdf';
-import { FaGithub } from 'react-icons/fa';
 
 const PostWrapper = styled.div`
   display: flex;
@@ -21,40 +19,13 @@ const PostWrapper = styled.div`
     margin: 4rem 1rem 1rem 1rem;
   }
 `;
-const ExternalLinks = styled.div`
-  display: flex;
-  padding: 1.5rem 1.5rem 0 1.5rem;
-  align-items: center;
-  a {
-    font-size: 20px;
-    background-color: ${props => props.theme.colors.background.dark};
-    color: ${props => props.theme.colors.white.base};
-    padding: 5px 10px;
-    border-radius: 10px;
-    margin: 0 auto;
-    &:hover {
-      color: ${props => props.theme.colors.background.dark};
-    }
-  }
-`;
 
-const Index = ({ data }) => {
+const Portfolio = ({ data }) => {
   const { edges } = data.allContentfulProjects;
-
   return (
     <Layout>
-      <Helmet title={'MIAWONG.DEV'} />
-      <Header title="Hi there 👋, I am Mia!">
-        Frontend JavaScript Developer
-        <ExternalLinks>
-          <a href={resume} download>
-            Resume
-          </a>
-          <a href="https://github.com/miaawong">
-            <FaGithub size="45" />
-          </a>
-        </ExternalLinks>
-      </Header>
+      <Helmet title={'Portfolio'} />
+      <Header title="Portfolio">Things that I have created...</Header>
 
       <PostWrapper>
         {edges.map(({ node }) => {
@@ -78,8 +49,6 @@ const Index = ({ data }) => {
               githubLink={githubLink}
               title={projectName}
               date={createdAt}
-              // need to figure out a way to limit the description to about 50 letters
-              //or so in query, is that possible?
               excerpt={shortDesc}
             />
           );
@@ -88,9 +57,7 @@ const Index = ({ data }) => {
     </Layout>
   );
 };
-
-export default Index;
-
+export default Portfolio;
 export const query = graphql`
   query {
     allContentfulProjects {
