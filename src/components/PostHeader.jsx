@@ -31,6 +31,7 @@ const TitleDesc = styled.div`
   float: left;
   width: 50%;
   margin: 0 auto;
+  padding: 30px;
   text-align: center;
   align-items: center;
   @media (max-width: ${props => props.theme.breakpoints.l}) {
