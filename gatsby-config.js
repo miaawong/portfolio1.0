@@ -30,6 +30,12 @@ module.exports = {
         downloadLocal: true,
       },
     },
+    {
+      resolve: `gatsby-plugin-google-analytics`,
+      options: {
+        trackingId: 'process.env.GOOGLE_ANALYTICS_TRACKING',
+      },
+    },
 
     {
       resolve: 'gatsby-transformer-remark',
