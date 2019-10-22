@@ -6,7 +6,7 @@ import styled from '@emotion/styled';
 import { Header, PostList } from 'components';
 import { Layout } from 'layouts';
 import resume from '../../resume/miawong.pdf';
-import { FaGithub } from 'react-icons/fa';
+import { FaGithub, FaLinkedin } from 'react-icons/fa';
 
 const PostWrapper = styled.div`
   display: flex;
@@ -51,7 +51,10 @@ const Index = ({ data }) => {
             Resume
           </a>
           <a href="https://github.com/miaawong">
-            <FaGithub size="45" />
+            <FaGithub size="30" />
+          </a>
+          <a href="https://linkedin.com/in/miawailamwong">
+            <FaLinkedin size="30" />
           </a>
         </ExternalLinks>
       </Header>
