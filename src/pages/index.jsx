@@ -6,7 +6,7 @@ import styled from '@emotion/styled';
 import { Header, PostList } from 'components';
 import { Layout } from 'layouts';
 import resume from '../../resume/miawong.pdf';
-import { FaGithub, FaLinkedin } from 'react-icons/fa';
+import { FaGithub, FaLinkedin, FaInstagram } from 'react-icons/fa';
 
 const PostWrapper = styled.div`
   display: flex;
@@ -31,7 +31,7 @@ const ExternalLinks = styled.div`
     color: ${props => props.theme.colors.white.base};
     padding: 5px 10px;
     border-radius: 10px;
-    margin: 0 auto;
+    margin: 0 20px;
     &:hover {
       color: ${props => props.theme.colors.background.dark};
     }
@@ -55,6 +55,9 @@ const Index = ({ data }) => {
           </a>
           <a href="https://linkedin.com/in/miawailamwong">
             <FaLinkedin size="30" />
+          </a>
+          <a href="https://www.instagram.com/miawong.dev/">
+            <FaInstagram size="30" />
           </a>
         </ExternalLinks>
       </Header>
