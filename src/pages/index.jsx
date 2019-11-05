@@ -5,7 +5,7 @@ import Helmet from 'react-helmet';
 import styled from '@emotion/styled';
 import { Header, PostList } from 'components';
 import { Layout } from 'layouts';
-import resume from '../../resume/miawong.pdf';
+import resume from '../../resume/miawongresume.docx.pdf';
 import { FaGithub, FaLinkedin, FaInstagram } from 'react-icons/fa';
 
 const PostWrapper = styled.div`
