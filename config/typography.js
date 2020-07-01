@@ -4,8 +4,8 @@ export const typography = new Typography({
   title: 'GatsbyTutorial',
   baseFontSize: '16px',
   baseLineHeight: 1.45,
-  headerFontFamily: ['Oswald', 'sans-serif'],
-  bodyFontFamily: ['Oswald', 'sans-serif'],
+  headerFontFamily: ['Roboto', 'sans-serif'],
+  bodyFontFamily: ['Roboto', 'sans-serif'],
   headerWeight: 500,
 });
 
