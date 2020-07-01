@@ -2,7 +2,7 @@ import React, { Fragment } from 'react';
 import { ThemeProvider } from 'emotion-theming';
 import { css, Global } from '@emotion/core';
 import PropTypes from 'prop-types';
-import 'typeface-open-sans';
+import 'typeface-roboto';
 import 'typeface-candal';
 import { SEO } from 'components';
 import { NavBar, Footer } from 'layouts';
@@ -34,6 +34,11 @@ const Layout = ({ children }) => (
             height: 100%;
             margin: 0;
             padding: 0;
+          }
+          #___gatsby,
+          #gatsby-focus-wrapper {
+            width: 100%;
+            height: 98%;
           }
 
           body {
