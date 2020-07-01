@@ -89,9 +89,10 @@ const Post = ({ data, pageContext }) => {
           Demo <FaLaptop />
         </a>
         <Tags>
-          {tags.map(tags => {
-            return <Tag>{tags}</Tag>;
-          })}
+          {tags &&
+            tags.map(tags => {
+              return <Tag>{tags}</Tag>;
+            })}
         </Tags>
       </PostHeader>
 
