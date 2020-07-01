@@ -1,13 +1,19 @@
 import React from 'react';
 import { Link } from 'gatsby';
 import styled from '@emotion/styled';
-import Headroom from 'react-headroom';
-import logo from '../../static/logo/mia.png';
-import resume from '../../resume/miawong.pdf';
-import { FaGithub } from 'react-icons/fa';
+
+import logo from '../../static/logo/MWlogo.png';
+
+const OuterNav = styled.nav`
+  margin: 1rem;
+  height: 4rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+`;
 
 const Nav = styled.nav`
-  height: 4vh;
+  height: 3rem;
   display: flex;
   justify-content: flex-end;
   font-family: ${props => props.theme.fontFamily.body};
@@ -25,22 +31,26 @@ const Nav = styled.nav`
   }
 `;
 
-const StyledLink = styled(Link)`
+const StyledImgLink = styled(Link)`
   display: flex;
   font-weight: 700;
   align-items: center;
 `;
 
 const NavBar = () => (
-  <Headroom calcHeightOnResize disableInlineStyles>
-    <StyledLink to="/">
-      <img src={logo} alt="Gatsby Logo" />
-    </StyledLink>
+  <OuterNav>
+    <StyledImgLink to="/">
+      <img src={logo} alt="Mia Wong logo" style={{ width: '9%', margin: 0 }} />
+    </StyledImgLink>
     <Nav>
-      <Link to="/about">About</Link>
-      <Link to="/portfolio">Portfolio</Link>
+      <Link to="/about" activeStyle={{ borderBottom: '2px solid black' }}>
+        About
+      </Link>
+      <Link to="/work" activeStyle={{ borderBottom: '2px solid black' }}>
+        Work
+      </Link>
     </Nav>
-  </Headroom>
+  </OuterNav>
 );
 
 export default NavBar;
