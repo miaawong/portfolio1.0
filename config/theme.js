@@ -55,6 +55,12 @@ export const transition = {
   duration: '0.4s',
 };
 
+export const device = {
+  s: '(max-width:600px)',
+  m: '(max-width:1199px)',
+  l: '(min-width:1200px)',
+};
+
 export const theme = {
   colors,
   gradient,
@@ -69,8 +75,8 @@ export const theme = {
     body: '700',
   },
   fontFamily: {
-    body: `Oswald, sans-serif`,
-    heading: `Oswald, sans-serif`,
+    body: `Roboto, sans-serif`,
+    heading: `Roboto, sans-serif`,
   },
   layout: {
     article: '46rem',
