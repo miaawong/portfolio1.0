@@ -1,12 +1,10 @@
 import React from 'react';
-import { graphql } from 'gatsby';
 import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
 import styled from '@emotion/styled';
-import { Header, PostList } from 'components';
 import { Layout } from 'layouts';
-import resume from '../../resume/miawongresume.docx.pdf';
-import { FaGithub, FaLinkedin, FaInstagram } from 'react-icons/fa';
+import { device } from '../../config/theme';
+import { StyledButton, ButtonFrame } from '../components/StyledButton';
 
 const PostWrapper = styled.div`
   display: flex;
@@ -38,85 +36,65 @@ const ExternalLinks = styled.div`
   }
 `;
 
-const Index = ({ data }) => {
-  const { edges } = data.allContentfulProjects;
+const Outer = styled.div`
+  height: 90%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+`;
+const Inner = styled.div`
+  height: 80%;
+  width: 90%;
+  margin: 0 auto;
+  border: 4px solid black;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+`;
 
+const Text = styled.div`
+  width: 80%;
+  height: 90%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+`;
+const TagLine = styled.h1`
+  font-size: 95px;
+  text-align: center;
+  @media ${device.s} {
+    font-size: 42px;
+  }
+`;
+const Name = styled.h1`
+  margin-bottom: 5rem;
+  @media ${device.s} {
+    font-size: 32px;
+  }
+`;
+
+const Index = () => {
   return (
     <Layout>
       <Helmet title={'MIAWONG.DEV'} />
-      <Header title="Hi there 👋, I am Mia!">
-        Frontend JavaScript Developer
-        <ExternalLinks>
-          <a href={resume} download>
-            Resume
-          </a>
-          <a href="https://github.com/miaawong">
-            <FaGithub size="30" />
-          </a>
-          <a href="https://linkedin.com/in/miawailamwong">
-            <FaLinkedin size="30" />
-          </a>
-          <a href="https://www.instagram.com/miawong.dev/">
-            <FaInstagram size="30" />
-          </a>
-        </ExternalLinks>
-      </Header>
-
-      <PostWrapper>
-        {edges.map(({ node }) => {
-          const {
-            id,
-            shortDesc,
-            projectName,
-            createdAt,
-            projectImg,
-            siteLink,
-            githubLink,
-            path,
-          } = node;
-
-          return (
-            <PostList
-              path={path}
-              key={id}
-              cover={projectImg.fluid}
-              siteLink={siteLink}
-              githubLink={githubLink}
-              title={projectName}
-              date={createdAt}
-              // need to figure out a way to limit the description to about 50 letters
-              //or so in query, is that possible?
-              excerpt={shortDesc}
-            />
-          );
-        })}
-      </PostWrapper>
+      <Outer>
+        <Inner>
+          <Text>
+            <Name>Mia Wong</Name>
+            <TagLine>I design & build&nbsp;tools.</TagLine>
+            <div style={{ display: 'flex', justifyContent: 'center' }}>
+              <StyledButton to="/work">
+                <ButtonFrame></ButtonFrame>My Work
+              </StyledButton>
+            </div>
+          </Text>
+        </Inner>
+      </Outer>
     </Layout>
   );
 };
 
 export default Index;
-
-export const query = graphql`
-  query {
-    allContentfulProjects {
-      edges {
-        node {
-          projectName
-          projectDesc
-          id
-          createdAt(formatString: "MM/DD/YYYY")
-          githubLink
-          siteLink
-          path
-          shortDesc
-          projectImg {
-            fluid(maxWidth: 1000, quality: 90) {
-              ...GatsbyContentfulFluid_tracedSVG
-            }
-          }
-        }
-      }
-    }
-  }
-`;
