@@ -1,40 +1,18 @@
-import React from 'react';
+import React, { useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
 import styled from '@emotion/styled';
 import { Layout } from 'layouts';
 import { device } from '../../config/theme';
-import { StyledButton, ButtonFrame } from '../components/StyledButton';
-
-const PostWrapper = styled.div`
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  margin: 4rem 4rem 1rem 4rem;
-  @media (max-width: 1000px) {
-    margin: 4rem 2rem 1rem 2rem;
-  }
-  @media (max-width: 700px) {
-    margin: 4rem 1rem 1rem 1rem;
-  }
-`;
-const ExternalLinks = styled.div`
-  display: flex;
-  padding: 1.5rem 1.5rem 0 1.5rem;
-  align-items: center;
-  a {
-    font-size: 20px;
-    background-color: ${props => props.theme.colors.background.dark};
-    color: ${props => props.theme.colors.white.base};
-    padding: 5px 10px;
-    border-radius: 10px;
-    margin: 0 20px;
-    &:hover {
-      color: ${props => props.theme.colors.background.dark};
-    }
-  }
-`;
+import { StyledButton, ButtonFrame } from '../components/StyledComponents';
+import {
+  FaGithub,
+  FaLaptop,
+  FaRegIdBadge,
+  FaInstagram,
+  FaLinkedin,
+} from 'react-icons/fa';
+import { MdEmail } from 'react-icons/md';
 
 const Outer = styled.div`
   height: 90%;
@@ -56,35 +34,89 @@ const Inner = styled.div`
 
 const Text = styled.div`
   width: 80%;
-  height: 90%;
+  height: 80%;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: space-around;
 `;
 const TagLine = styled.h1`
-  font-size: 95px;
+  font-size: 5rem;
   text-align: center;
   @media ${device.s} {
     font-size: 42px;
   }
 `;
 const Name = styled.h1`
-  margin-bottom: 5rem;
+  text-align: center;
+  font-size: 3rem;
   @media ${device.s} {
-    font-size: 32px;
+    font-size: 2rem;
   }
 `;
+const Links = styled.div`
+  width: 10rem;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  & > a {
+    text-decoration: none;
 
+    & > svg {
+      color: black;
+    }
+  }
+`;
+const CopiedAlert = styled.p`
+  font-size: 12px;
+  position: absolute;
+  top: 0;
+  background: #000000;
+  color: #ffffff;
+  padding: 2px;
+  border-radius: 2px;
+`;
 const Index = () => {
+  const emailRef = useRef();
+  const [copied, setCopied] = useState(false);
+  const copyToClipboard = () => {
+    navigator.clipboard.writeText('miawongdev@gmail.com');
+    setCopied(true);
+    setTimeout(() => {
+      setCopied(false);
+    }, 2000);
+  };
   return (
     <Layout>
       <Helmet title={'MIAWONG.DEV'} />
       <Outer>
         <Inner>
           <Text>
-            <Name>Mia Wong</Name>
             <TagLine>I design & build&nbsp;tools.</TagLine>
+            <Name>
+              Mia Wong
+              <Links>
+                <a href="https://www.instagram.com/mia_codes/">
+                  <FaInstagram size={30} />
+                </a>
+                <a href="https://www.linkedin.com/in/miawailamwong/">
+                  <FaLinkedin size={30} />
+                </a>
+                <a href="https://github.com/miaawong">
+                  <FaGithub size={30} />
+                </a>
+                <a
+                  href="mailto:miawongdev@gmail.com"
+                  onClick={() => {
+                    copyToClipboard();
+                  }}
+                  style={{ position: 'relative' }}
+                >
+                  <MdEmail size={32} />
+                  {copied && <CopiedAlert>Copied!</CopiedAlert>}
+                </a>
+              </Links>
+            </Name>
             <div style={{ display: 'flex', justifyContent: 'center' }}>
               <StyledButton to="/work">
                 <ButtonFrame></ButtonFrame>My Work
