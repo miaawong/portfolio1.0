@@ -57,7 +57,7 @@ export const transition = {
 
 export const device = {
   s: '(max-width:600px)',
-  m: '(max-width:1199px)',
+  m: '(max-width:800px)',
   l: '(min-width:1200px)',
 };
 
