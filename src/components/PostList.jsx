@@ -5,23 +5,21 @@ import styled from '@emotion/styled';
 import PropTypes from 'prop-types';
 import theme from '../../config/theme';
 import { device } from '../../config/theme';
-import { StyledButton, ButtonFrame } from '../components/StyledButton';
+import { StyledButton, ButtonFrame } from './StyledComponents';
 
 const Wrapper = styled.article`
-  height: 100%;
-  margin-bottom: 1rem;
   position: relative;
   z-index: 100;
-  border-radius: ${props => props.theme.borderRadius.default};
+  /* border-radius: ${props => props.theme.borderRadius.default}; */
   box-shadow: ${props => props.theme.shadow.feature.small.default};
   transition: ${props => props.theme.transitions.boom.transition};
-  height: 17rem;
+  height: 18rem;
   width: 50%;
   &:hover {
     box-shadow: ${props => props.theme.shadow.feature.small.hover};
     transform: scale(1.04);
   }
-  @media ${device.s} {
+  @media ${device.s}, ${device.m} {
     width: 100%;
   }
 `;
@@ -37,7 +35,7 @@ const StyledLink = styled(Link)`
   justify-content: space-between;
   padding: 1rem;
   z-index: 3;
-  border-radius: ${props => props.theme.borderRadius.default};
+  /* border-radius: ${props => props.theme.borderRadius.default}; */
   &:after {
     content: '';
     position: absolute;
@@ -56,7 +54,7 @@ const StyledLink = styled(Link)`
       rgba(0, 0, 0, 0.8) 100%
     );
     z-index: -10;
-    border-radius: ${theme.borderRadius.default};
+    /* border-radius: ${theme.borderRadius.default}; */
     transition: opacity ${theme.transitions.default.duration};
   }
 `;
@@ -70,9 +68,9 @@ const Image = styled.div`
   bottom: 0;
   z-index: 1;
   object-fit: cover;
-  border-radius: ${props => props.theme.borderRadius.default};
+  /* border-radius: ${props => props.theme.borderRadius.default}; */
   img {
-    border-radius: ${props => props.theme.borderRadius.default};
+    /* border-radius: ${props => props.theme.borderRadius.default}; */
   }
   > div {
     position: static !important;
@@ -103,9 +101,10 @@ const Card = styled.div`
   display: flex;
   width: 100%;
   justify-content: center;
-  @media ${device.s} {
+  @media ${device.s}, ${device.m} {
     flex-direction: column;
   }
+  background: #f6f7f9;
   margin-bottom: 2rem;
 `;
 const Description = styled.div`
@@ -115,7 +114,7 @@ const Description = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  @media ${device.s} {
+  @media ${device.s}, ${device.m} {
     width: 100%;
     padding: 0 2rem;
   }
@@ -123,6 +122,7 @@ const Description = styled.div`
 const PostList = ({
   cover,
   desc,
+  shortDesc,
   siteLink,
   githubLink,
   date,
@@ -150,10 +150,10 @@ const PostList = ({
           textOverflow: 'ellipsis',
         }}
       >
-        {desc}
+        {shortDesc}
       </span>
       <div style={{ display: 'flex', justifyContent: 'center' }}>
-        <StyledButton to="/work">
+        <StyledButton to={path}>
           <ButtonFrame></ButtonFrame>My Work
         </StyledButton>
       </div>
