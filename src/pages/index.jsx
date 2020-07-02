@@ -44,14 +44,14 @@ const TagLine = styled.h1`
   font-size: 5rem;
   text-align: center;
   @media ${device.s} {
-    font-size: 42px;
+    font-size: 2.5rem;
   }
 `;
 const Name = styled.h1`
   text-align: center;
-  font-size: 3rem;
+  font-size: 2.5rem;
   @media ${device.s} {
-    font-size: 2rem;
+    font-size: 1.5rem;
   }
 `;
 const Links = styled.div`
