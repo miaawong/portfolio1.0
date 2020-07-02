@@ -17,7 +17,6 @@ import 'react-responsive-carousel/lib/styles/carousel.min.css';
 const ProjectContainer = styled.div`
   margin: 3rem auto;
   width: 90%;
-  height: 100%;
 `;
 const StyledCarousel = styled(Carousel)`
   border: 4px solid black;
