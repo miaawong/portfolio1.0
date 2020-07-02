@@ -2,87 +2,183 @@ import React from 'react';
 import Helmet from 'react-helmet';
 import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
+import Img from 'gatsby-image';
 import { Header } from 'components';
-import { Layout, Container } from 'layouts';
-import {
-  FaGithub,
-  FaHtml5,
-  FaJs,
-  FaReact,
-  FaBootstrap,
-  FaGit,
-  FaNodeJs,
-  FaCss3Alt,
-} from 'react-icons/fa';
+import { Layout } from 'layouts';
+import { PageTitle } from '../components/StyledComponents';
+import { device } from '../../config/theme';
+import mia from '../../static/logo/mia.jpg';
 
-const SkillsContainer = styled.div`
-  align-items: center;
-  display: grid;
-  grid-gap: 3px;
-  grid-template-columns: repeat(4, 1fr);
-  justify-content: center;
-  color: black;
-  p {
-    padding: 10px 10px;
-    background-color: ${props => props.theme.colors.background.dark};
-    color: ${props => props.theme.colors.white.light};
-    border-radius: 10px;
-    @media (max-width: ${props => props.theme.breakpoints.m}) {
-      padding: 5px;
-    }
+const Container = styled.div`
+  width: 90%;
+  margin: 4rem auto;
+  @media ${device.s} {
+    margin: 2rem auto;
   }
 `;
-const SkillsBlock = styled.div`
-  margin: 50px auto;
-  max-width: 100%;
+
+const SkillsContainer = styled.div`
+  width: 50%;
+  display: flex;
+  flex-wrap: wrap;
+  & > li {
+    font-weight: 700;
+    font-size: 1.25rem;
+    flex: 1 1 170px;
+    @media ${device.s}, ${device.m} {
+      flex: 1 1 120px;
+      font-size: 1rem;
+    }
+  }
+  @media ${device.s}, ${device.m} {
+    padding: 1rem;
+    width: 100%;
+  }
+`;
+
+const Category = styled.div`
+  width: 100%;
+  margin: 3rem auto;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+
+  @media ${device.s}, ${device.m} {
+    flex-direction: column;
+  }
+`;
+
+const CategoryName = styled.h2`
+  font-size: 3rem;
+  @media ${device.s}, ${device.m} {
+    border-bottom: 2px solid black;
+    text-align: center;
+    font-size: 2rem;
+  }
+`;
+const Paragraph = styled.h3`
+  width: 50%;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  line-height: 2rem;
+  padding: 1rem 2rem;
+  @media ${device.s}, ${device.m} {
+    width: 100%;
+    padding: 1rem;
+    order: 2;
+    font-size: 1rem;
+  }
+`;
+const Image = styled.div`
+  margin: 0 2rem;
+  width: 50%;
+  position: relative;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  @media ${device.s}, ${device.m} {
+    width: 100%;
+    justify-content: center;
+    margin: 0;
+    order: 1;
+  }
+`;
+// const Border = styled.div`
+//   max-width: 80%;
+//   height: 80%;
+//   border: 3px solid black;
+//   position: absolute;
+//   transform: translate(20px, -20px);
+//   z-index: -1;
+// `;
+
+const Fun = styled.div`
+  width: 50%;
+  font-size: 1.2rem;
+  & > li > a {
+    text-decoration: none;
+    font-weight: bold;
+    color: black;
+    border-bottom: 2px solid black;
+  }
+  @media ${device.s}, ${device.m} {
+    padding: 1rem;
+    width: 100%;
+    font-size: 1rem;
+  }
 `;
 
 const About = center => (
   <Layout>
-    <Helmet title={'Hello Again!'} />
-    <Header title="Hello Again!">About Me</Header>
+    <Helmet title={'About'} />
+    <PageTitle>About</PageTitle>
     <Container center={center}>
-      <h3>
-        I am primarily a JavaScript Developer. Self-taught and highly motivated
-        to learn something everyday. I like to build stuff with React and
-        Gatsby.js. However, here are other skills that I have picked up over the
-        years ...
-      </h3>
-
-      <SkillsBlock>
+      <Category>
+        <Paragraph>
+          As a Web Developer, I’m curious and passionate about creating useful,
+          intuitive, and beautiful tools for&nbsp;the&nbsp;web.
+          <br /> Born in Hong Kong and raised in Atlanta, GA. I've learned to
+          adapt and embrace adversities and use obstacles as opportunities of
+          growth.
+          <br />
+          I'm eager learn new skills and use the knowledge I have to create
+          innovative solutions.
+        </Paragraph>
+        <Image>
+          {/* <Border></Border> */}
+          <img
+            src={mia}
+            alt="image of Mia"
+            style={{
+              maxWidth: '65%',
+              objectFit: 'contain',
+              border: '4px solid black',
+            }}
+          />
+        </Image>
+      </Category>
+      <Category>
+        <CategoryName>Skills</CategoryName>
         <SkillsContainer>
-          <p className="row1">
-            HTML5 <FaHtml5 />{' '}
-          </p>
-          <p className="row2">
-            CSS3
-            <FaCss3Alt style={{ marginLeft: '4px' }} />{' '}
-          </p>
-          <p className="row3">
-            JavaScript
-            <FaJs style={{ marginLeft: '3px' }} />{' '}
-          </p>
-          <p className="row4">
-            React.js <FaReact />{' '}
-          </p>
-          <p className="row5">Gatsby.js</p>
-          <p className="row6">
-            Bootstrap <FaBootstrap />{' '}
-          </p>
-          <p className="row7">jQuery</p>
-          <p className="row8">
-            git <FaGit style={{ marginLeft: '3px' }} />{' '}
-          </p>
-          <p className="row9">
-            Github <FaGithub style={{ marginLeft: '3px' }} />{' '}
-          </p>
-          <p className="row10">
-            Node.js <FaNodeJs style={{ marginLeft: '3px' }} />{' '}
-          </p>
-          <p className="row11">MySQL</p>
-          <p className="row12">MongoDB</p>
+          <li>JavaScript</li>
+          <li>React.js</li>
+          <li>Redux</li>
+          <li>HTML5</li>
+          <li>CSS3</li>
+          <li>Node.js</li>
+          <li>Express</li>
+          <li>MongoDB</li>
+          <li>AWS</li>
+          <li>jQuery</li>
+          <li>Gatsby.js</li>
+          <li>styled-components</li>
+          <li>Bootstrap</li>
+          <li>Git/Github</li>
+          <li>npm</li>
         </SkillsContainer>
-      </SkillsBlock>
+      </Category>
+      <Category>
+        <CategoryName>Fun Stuff</CategoryName>
+        <Fun>
+          <li>
+            Cooking! I love eating and cooking! I created my own recipe app{' '}
+            <a href="https://cookin.io">cookin'</a> since I tend to personalize
+            recipes that I find.{' '}
+          </li>
+          <li>
+            Gaming! I never really did sports growing up, but I got into gaming
+            a few years ago. It has definitely taught me about failures, being a
+            team player, and so much more! I stream on{' '}
+            <a href="https://twitch.com/miacodes">Twitch</a> sometimes too!{' '}
+          </li>
+          <li>
+            Walking and Hiking. I love the sound of nature, sun, and fresh air!
+          </li>
+          <li>Coffee. No other comments needed.</li>
+          <li>Yoga. Here's a friendly reminder to stretch it out!</li>
+        </Fun>
+      </Category>
     </Container>
   </Layout>
 );
