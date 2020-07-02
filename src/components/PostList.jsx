@@ -4,36 +4,25 @@ import Img from 'gatsby-image';
 import styled from '@emotion/styled';
 import PropTypes from 'prop-types';
 import theme from '../../config/theme';
+import { device } from '../../config/theme';
+import { StyledButton, ButtonFrame } from '../components/StyledButton';
 
 const Wrapper = styled.article`
-  margin-bottom: 2rem;
+  height: 100%;
+  margin-bottom: 1rem;
   position: relative;
   z-index: 100;
   border-radius: ${props => props.theme.borderRadius.default};
   box-shadow: ${props => props.theme.shadow.feature.small.default};
   transition: ${props => props.theme.transitions.boom.transition};
   height: 17rem;
-  flex-basis: calc(99.9% * 1 / 3 - 2.5rem);
-  max-width: calc(99.9% * 1 / 3 - 2.5rem);
-  width: calc(99.9% * 1 / 3 - 2.5rem);
-
+  width: 50%;
   &:hover {
     box-shadow: ${props => props.theme.shadow.feature.small.hover};
     transform: scale(1.04);
   }
-
-  @media (max-width: 1000px) {
-    flex-basis: calc(99.9% * 1 / 2 - 1rem);
-    max-width: calc(99.9% * 1 / 2 - 1rem);
-    width: calc(99.9% * 1 / 2 - 1rem);
-    height: 18rem;
-  }
-
-  @media (max-width: 700px) {
-    flex-basis: 100%;
-    max-width: 100%;
+  @media ${device.s} {
     width: 100%;
-    height: 15rem;
   }
 `;
 
@@ -107,10 +96,33 @@ const Title = styled.h2`
   font-family: ${props => props.theme.fontFamily.body};
   font-weight: 1000;
   font-size: 2rem;
+  letter-spacing: 2px;
 `;
 
+const Card = styled.div`
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  @media ${device.s} {
+    flex-direction: column;
+  }
+  margin-bottom: 2rem;
+`;
+const Description = styled.div`
+  height: 18rem;
+  width: 50%;
+  padding: 1rem 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  @media ${device.s} {
+    width: 100%;
+    padding: 0 2rem;
+  }
+`;
 const PostList = ({
   cover,
+  desc,
   siteLink,
   githubLink,
   date,
@@ -118,19 +130,35 @@ const PostList = ({
   excerpt,
   path,
 }) => (
-  <Wrapper>
-    <Image>
-      <Img fluid={cover} />
-    </Image>
-
-    <StyledLink to={path}>
-      <Info>
-        <span>{date}</span>
-        <Title>{title}</Title>
-        <span>{excerpt}</span>
-      </Info>
-    </StyledLink>
-  </Wrapper>
+  <Card>
+    <Wrapper>
+      <Image>
+        <Img fluid={cover} />
+      </Image>
+      <StyledLink to={path}>
+        <Info>
+          <Title>{title}</Title>
+        </Info>
+      </StyledLink>
+    </Wrapper>
+    <Description>
+      <Title>{title}</Title>
+      <span
+        style={{
+          width: '20rem',
+          margin: '0 auto',
+          textOverflow: 'ellipsis',
+        }}
+      >
+        {desc}
+      </span>
+      <div style={{ display: 'flex', justifyContent: 'center' }}>
+        <StyledButton to="/work">
+          <ButtonFrame></ButtonFrame>My Work
+        </StyledButton>
+      </div>
+    </Description>
+  </Card>
 );
 
 export default PostList;
