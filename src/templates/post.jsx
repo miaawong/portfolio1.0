@@ -32,16 +32,22 @@ const Tags = styled.div`
   justify-content: space-evenly;
   flex-wrap: wrap;
   margin: 0 auto;
-  width: 55%;
-  @media ${device.s}, ${device.m} {
+  width: 50%;
+  @media ${device.m} {
+    width: 80%;
+    padding: 1rem;
+  }
+  @media ${device.s} {
     width: 100%;
+    padding: 1rem;
   }
 `;
 const Tag = styled.li`
   font-weight: 700;
-  margin: 1rem;
-  flex: 1 1 150px;
+  font-size: 1.25rem;
+  flex: 1 1 170px;
   @media ${device.s}, ${device.m} {
+    font-size: 1rem;
     flex: 1 1 120px;
   }
 `;
@@ -96,6 +102,7 @@ const PrevButton = styled.button`
   }
 `;
 const Links = styled.div`
+  width: 80%;
   margin: 0 auto;
   display: flex;
   justify-content: space-between;
@@ -103,7 +110,7 @@ const Links = styled.div`
     display: flex;
     color: #000000;
     text-decoration: none;
-    margin: 0 2rem;
+
     & > p {
       margin: 0 1rem;
     }
@@ -144,10 +151,12 @@ const CategoryName = styled.h2`
 `;
 
 const Description = styled.h3`
+  line-height: 2rem;
   width: 50%;
   margin: 0 auto;
   @media ${device.s}, ${device.m} {
-    width: 100%;
+    font-size: 1rem;
+    width: 80%;
   }
 `;
 const Post = ({ data, pageContext }) => {
