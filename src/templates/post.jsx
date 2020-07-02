@@ -11,13 +11,16 @@ import { FaGithub, FaLaptop } from 'react-icons/fa';
 import { MdKeyboardArrowRight, MdKeyboardArrowLeft } from 'react-icons/md';
 import '../styles/prism';
 import { PageTitle } from '../components/StyledComponents';
+import ReactDom from 'react-dom';
+import { Carousel } from 'react-responsive-carousel';
+import 'react-responsive-carousel/lib/styles/carousel.min.css';
 const ProjectContainer = styled.div`
-  margin: 4rem auto;
+  margin: 3rem auto;
   width: 90%;
+  height: 100%;
 `;
-const Image = styled.div`
+const StyledCarousel = styled(Carousel)`
   border: 4px solid black;
-  width: 84%;
   margin: 0 auto;
   img {
     margin: 0;
@@ -26,6 +29,9 @@ const Image = styled.div`
     width: 100%;
   }
   position: relative;
+  & > .thumbs-wrapper {
+    display: none;
+  }
 `;
 const Tags = styled.div`
   display: flex;
@@ -65,44 +71,8 @@ const SuggestionsContainer = styled.div`
   }
 `;
 
-const NextButton = styled.button`
-  position: absolute;
-  top: 0;
-  right: -5rem;
-  width: 5rem;
-  height: 100%;
-  border: none;
-  outline: none;
-  background: none;
-  cursor: pointer;
-  & > svg {
-    color: rgba(0, 0, 0, 0.5);
-    &:hover {
-      transition: 200ms ease;
-      color: #000000;
-    }
-  }
-`;
-const PrevButton = styled.button`
-  position: absolute;
-  top: 0;
-  left: -5rem;
-  width: 5rem;
-  height: 100%;
-  border: none;
-  outline: none;
-  background: none;
-  cursor: pointer;
-  & > svg {
-    color: rgba(0, 0, 0, 0.5);
-    &:hover {
-      transition: 200ms ease;
-      color: #000000;
-    }
-  }
-`;
 const Links = styled.div`
-  width: 80%;
+  width: 45%;
   margin: 0 auto;
   display: flex;
   justify-content: space-between;
@@ -117,6 +87,9 @@ const Links = styled.div`
     & > svg {
       color: black;
     }
+  }
+  @media ${device.s}, ${device.m} {
+    width: 80%;
   }
 `;
 
@@ -179,21 +152,6 @@ const Post = ({ data, pageContext }) => {
     return image.fluid;
   });
 
-  const nextImg = () => {
-    if (index >= images.length - 1) {
-      setIndex(0);
-    } else {
-      setIndex(index + 1);
-    }
-  };
-  const prevImg = () => {
-    if (index === 0) {
-      setIndex(index + 1);
-    } else {
-      setIndex(index - 1);
-    }
-  };
-
   return (
     <Layout>
       <SEO
@@ -207,15 +165,13 @@ const Post = ({ data, pageContext }) => {
         {projectName}
       </PageTitle>
       <ProjectContainer>
-        <Image>
-          <Img fluid={images[index]} objectFit="cover" />
-          <PrevButton onClick={() => prevImg()}>
-            <MdKeyboardArrowLeft size={50} />
-          </PrevButton>
-          <NextButton onClick={() => nextImg()}>
-            <MdKeyboardArrowRight size={50} />
-          </NextButton>
-        </Image>
+        <StyledCarousel autoPlay infiniteLoop showThumbs={false}>
+          {images.map(image => (
+            <div>
+              <Img fluid={image} objectFit="cover" />
+            </div>
+          ))}
+        </StyledCarousel>
       </ProjectContainer>
       <ProjectDesc>
         <Category>
