@@ -19,3 +19,9 @@ export const StyledButton = styled(Link)`
   position: relative;
   z-index: 1;
 `;
+
+export const PageTitle = styled.h1`
+  width: 90%;
+  margin: 2rem auto 0 auto;
+  border-bottom: 3px solid black;
+`;
