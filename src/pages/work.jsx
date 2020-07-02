@@ -7,31 +7,22 @@ import { Header, PostList } from 'components';
 import { Layout } from 'layouts';
 
 const PostWrapper = styled.div`
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  margin: 4rem 4rem 1rem 4rem;
-  @media (max-width: 1000px) {
-    margin: 4rem 2rem 1rem 2rem;
-  }
-  @media (max-width: 700px) {
-    margin: 4rem 1rem 1rem 1rem;
-  }
+  margin: 4rem auto;
+  width: 90%;
 `;
 
-const Portfolio = ({ data }) => {
+const Work = ({ data }) => {
   const { edges } = data.allContentfulProjects;
   return (
     <Layout>
-      <Helmet title={'Portfolio'} />
-      <Header title="Portfolio">Things that I have created...</Header>
+      <Helmet title={'Work'} />
 
       <PostWrapper>
         {edges.map(({ node }) => {
           const {
             id,
             shortDesc,
+            projectDesc,
             projectName,
             createdAt,
             projectImg,
@@ -49,7 +40,7 @@ const Portfolio = ({ data }) => {
               githubLink={githubLink}
               title={projectName}
               date={createdAt}
-              excerpt={shortDesc}
+              desc={projectDesc}
             />
           );
         })}
@@ -57,7 +48,7 @@ const Portfolio = ({ data }) => {
     </Layout>
   );
 };
-export default Portfolio;
+export default Work;
 export const query = graphql`
   query {
     allContentfulProjects {
