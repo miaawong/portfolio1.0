@@ -1,11 +1,12 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'gatsby';
 import styled from '@emotion/styled';
-
+import { device } from '../../config/theme';
 import logo from '../../static/logo/MWlogo.png';
 
 const OuterNav = styled.nav`
-  margin: 1rem;
+  width: 90%;
+  margin: 1rem auto;
   height: 4rem;
   display: flex;
   align-items: center;
@@ -14,8 +15,9 @@ const OuterNav = styled.nav`
 
 const Nav = styled.nav`
   height: 3rem;
+  width: 11rem;
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
   font-family: ${props => props.theme.fontFamily.body};
   font-weight: 600;
   font-size: 1.2rem;
@@ -37,10 +39,15 @@ const StyledImgLink = styled(Link)`
   align-items: center;
 `;
 
+const Logo = styled.img`
+  width: 3rem;
+  margin: 0;
+`;
+
 const NavBar = () => (
   <OuterNav>
     <StyledImgLink to="/">
-      <img src={logo} alt="Mia Wong logo" style={{ width: '9%', margin: 0 }} />
+      <Logo src={logo} alt="Mia Wong logo" />
     </StyledImgLink>
     <Nav>
       <Link to="/about" activeStyle={{ borderBottom: '2px solid black' }}>
