@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 import { Header, PostList } from 'components';
 import { Layout } from 'layouts';
+import { PageTitle } from '../components/StyledComponents';
 
 const PostWrapper = styled.div`
   margin: 4rem auto;
@@ -16,7 +17,7 @@ const Work = ({ data }) => {
   return (
     <Layout>
       <Helmet title={'Work'} />
-
+      <PageTitle>My Work</PageTitle>
       <PostWrapper>
         {edges.map(({ node }) => {
           const {
@@ -41,6 +42,7 @@ const Work = ({ data }) => {
               title={projectName}
               date={createdAt}
               desc={projectDesc}
+              shortDesc={shortDesc}
             />
           );
         })}
