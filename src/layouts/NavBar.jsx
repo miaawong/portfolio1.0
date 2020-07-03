@@ -3,8 +3,10 @@ import { Link } from 'gatsby';
 import styled from '@emotion/styled';
 import { device } from '../../config/theme';
 import logo from '../../static/logo/MWlogo.png';
+import resume from '../../resume/MiaWong2020.pdf';
 
 const OuterNav = styled.nav`
+  max-width: 1600px;
   width: 90%;
   margin: 1rem auto;
   height: 4rem;
@@ -15,7 +17,7 @@ const OuterNav = styled.nav`
 
 const Nav = styled.nav`
   height: 3rem;
-  width: 11rem;
+  width: 18rem;
   display: flex;
   justify-content: space-between;
   font-family: ${props => props.theme.fontFamily.body};
@@ -28,7 +30,7 @@ const Nav = styled.nav`
     margin: 0 1.5rem;
     transition: all ${props => props.theme.transitions.default.duration};
     &:hover {
-      color: ${props => props.theme.colors.background.dark};
+      color: #97989a;
     }
   }
 `;
@@ -56,6 +58,9 @@ const NavBar = () => (
       <Link to="/work" activeStyle={{ borderBottom: '2px solid black' }}>
         Work
       </Link>
+      <a href={resume} download>
+        Resume
+      </a>
     </Nav>
   </OuterNav>
 );
