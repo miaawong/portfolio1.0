@@ -10,11 +10,13 @@ import Suggestions from '../components/Suggestions.jsx';
 import { FaGithub, FaLaptop } from 'react-icons/fa';
 import { MdKeyboardArrowRight, MdKeyboardArrowLeft } from 'react-icons/md';
 import '../styles/prism';
-import { PageTitle } from '../components/StyledComponents';
+import { PageTitle, ExternalLinks } from '../components/StyledComponents';
 import ReactDom from 'react-dom';
 import { Carousel } from 'react-responsive-carousel';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
+
 const ProjectContainer = styled.div`
+  max-width: 1600px;
   margin: 3rem auto;
   width: 90%;
 `;
@@ -37,7 +39,7 @@ const Tags = styled.div`
   justify-content: space-evenly;
   flex-wrap: wrap;
   margin: 0 auto;
-  width: 50%;
+  width: 46%;
   @media ${device.m} {
     width: 80%;
     padding: 1rem;
@@ -48,6 +50,7 @@ const Tags = styled.div`
   }
 `;
 const Tag = styled.li`
+  margin: 0 0.5rem;
   font-weight: 700;
   font-size: 1.25rem;
   flex: 1 1 170px;
@@ -93,6 +96,7 @@ const Links = styled.div`
 `;
 
 const ProjectDesc = styled.section`
+  max-width: 1600px;
   width: 75%;
   margin: 2rem auto;
   display: flex;
@@ -131,6 +135,7 @@ const Description = styled.h3`
     width: 80%;
   }
 `;
+
 const Post = ({ data, pageContext }) => {
   const [index, setIndex] = React.useState(0);
   const { prev, next } = pageContext;
@@ -167,7 +172,9 @@ const Post = ({ data, pageContext }) => {
         <StyledCarousel autoPlay infiniteLoop showThumbs={false}>
           {images.map(image => (
             <div>
-              <Img fluid={image} objectFit="cover" />
+              <a href={siteLink} style={{ cursor: 'pointer' }}>
+                <Img fluid={image} alt={projectName} objectFit="cover" />
+              </a>
             </div>
           ))}
         </StyledCarousel>
@@ -189,14 +196,18 @@ const Post = ({ data, pageContext }) => {
         <Category>
           <CategoryName>Links</CategoryName>
           <Links>
-            <a href={githubLink}>
-              <p>Github</p>
-              <FaGithub size={30} />
-            </a>
-            <a href={siteLink}>
-              <p>Project Site</p>
-              <FaLaptop size={30} />
-            </a>
+            {githubLink && (
+              <ExternalLinks href={githubLink}>
+                <p>Github</p>
+                <FaGithub size={30} />
+              </ExternalLinks>
+            )}
+            {siteLink && (
+              <ExternalLinks href={siteLink}>
+                <p>Project Site</p>
+                <FaLaptop size={30} />
+              </ExternalLinks>
+            )}
           </Links>
         </Category>
       </ProjectDesc>
@@ -229,13 +240,13 @@ export const ONE_POST = graphql`
       projectDesc
       projectImg {
         fluid(maxWidth: 1920, quality: 90) {
-          ...GatsbyContentfulFluid_tracedSVG
+          ...GatsbyContentfulFluid
           src
         }
       }
       projectImages {
         fluid(maxWidth: 1920, quality: 90) {
-          ...GatsbyContentfulFluid_tracedSVG
+          ...GatsbyContentfulFluid
           src
         }
       }
