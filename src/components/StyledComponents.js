@@ -18,10 +18,24 @@ export const StyledButton = styled(Link)`
   font-size: 20px;
   position: relative;
   z-index: 1;
+  &:hover {
+    transition: 200ms ease;
+    transform: scale(1.1);
+  }
 `;
 
 export const PageTitle = styled.h1`
+  max-width: 1600px;
   width: 90%;
   margin: 2rem auto 0 auto;
   border-bottom: 3px solid black;
+`;
+export const ExternalLinks = styled.a`
+  &:hover {
+    & > svg {
+      transition: 200ms ease;
+      color: #97989a;
+    }
+  }
+  cursor: pointer;
 `;
