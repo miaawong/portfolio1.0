@@ -3,7 +3,7 @@ import { Link } from 'gatsby';
 import styled from '@emotion/styled';
 import { device } from '../../config/theme';
 import logo from '../../static/logo/MWlogo.png';
-import resume from '../../resume/MiaWong2020.pdf';
+import resume from '../../resume/MiaWong2020(1).pdf';
 
 const OuterNav = styled.nav`
   max-width: 1600px;

@@ -8,7 +8,7 @@ import { Layout } from 'layouts';
 import { PageTitle } from '../components/StyledComponents';
 import { device } from '../../config/theme';
 import mia from '../../static/logo/mia.jpg';
-import resume from '../../resume/MiaWong2020.pdf';
+import resume from '../../resume/MiaWong2020(1).pdf';
 import { StyledButton, ButtonFrame } from '../components/StyledComponents';
 
 const Container = styled.div`
