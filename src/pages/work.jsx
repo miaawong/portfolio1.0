@@ -8,6 +8,7 @@ import { Layout } from 'layouts';
 import { PageTitle } from '../components/StyledComponents';
 
 const PostWrapper = styled.div`
+  max-width: 1600px;
   margin: 4rem auto;
   width: 90%;
 `;
@@ -66,7 +67,7 @@ export const query = graphql`
           shortDesc
           projectImg {
             fluid(maxWidth: 1000, quality: 90) {
-              ...GatsbyContentfulFluid_tracedSVG
+              ...GatsbyContentfulFluid
             }
           }
         }
