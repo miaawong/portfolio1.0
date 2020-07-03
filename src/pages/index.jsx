@@ -4,7 +4,11 @@ import Helmet from 'react-helmet';
 import styled from '@emotion/styled';
 import { Layout } from 'layouts';
 import { device } from '../../config/theme';
-import { StyledButton, ButtonFrame } from '../components/StyledComponents';
+import {
+  StyledButton,
+  ButtonFrame,
+  ExternalLinks,
+} from '../components/StyledComponents';
 import {
   FaGithub,
   FaLaptop,
@@ -15,13 +19,14 @@ import {
 import { MdEmail } from 'react-icons/md';
 
 const Outer = styled.div`
-  height: 90%;
+  height: 89%;
   width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
 `;
 const Inner = styled.div`
+  max-width: 1600px;
   height: 80%;
   width: 90%;
   margin: 0 auto;
@@ -55,8 +60,8 @@ const Name = styled.h1`
   }
 `;
 const Links = styled.div`
-  width: 10rem;
-  margin: 0 auto;
+  width: 360px;
+  margin: 1rem auto;
   display: flex;
   justify-content: space-between;
   & > a {
@@ -96,16 +101,16 @@ const Index = () => {
             <Name>
               Mia Wong
               <Links>
-                <a href="https://www.instagram.com/mia_codes/">
+                <ExternalLinks href="https://www.instagram.com/mia_codes/">
                   <FaInstagram size={30} />
-                </a>
-                <a href="https://www.linkedin.com/in/miawailamwong/">
+                </ExternalLinks>
+                <ExternalLinks href="https://www.linkedin.com/in/miawailamwong/">
                   <FaLinkedin size={30} />
-                </a>
-                <a href="https://github.com/miaawong">
+                </ExternalLinks>
+                <ExternalLinks href="https://github.com/miaawong">
                   <FaGithub size={30} />
-                </a>
-                <a
+                </ExternalLinks>
+                <ExternalLinks
                   href="mailto:miawongdev@gmail.com"
                   onClick={() => {
                     copyToClipboard();
@@ -114,7 +119,7 @@ const Index = () => {
                 >
                   <MdEmail size={32} />
                   {copied && <CopiedAlert>Copied!</CopiedAlert>}
-                </a>
+                </ExternalLinks>
               </Links>
             </Name>
             <div style={{ display: 'flex', justifyContent: 'center' }}>
