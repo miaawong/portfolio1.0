@@ -153,8 +153,9 @@ const PostList = ({
         {shortDesc}
       </span>
       <div style={{ display: 'flex', justifyContent: 'center' }}>
-        <StyledButton to={path}>
-          <ButtonFrame></ButtonFrame>My Work
+        <StyledButton to={path} style={{ width: '7rem' }}>
+          <ButtonFrame style={{ width: '7rem' }} />
+          View More
         </StyledButton>
       </div>
     </Description>
